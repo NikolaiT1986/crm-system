@@ -57,4 +57,9 @@ dependencies {
 
 tasks.named('test') {
     useJUnitPlatform()
+    jvmArgs += "-Xshare:off"
+    jvmArgs += [
+            "-javaagent:${configurations.testRuntimeClasspath.find { it.name.contains('mockito-core') }}"
+    ]
 }
+
